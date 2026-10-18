@@ -34,9 +34,9 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       accent:
         "bg-accent text-white shadow-soft hover:bg-accent-600 hover:shadow-card",
       outline:
-        "border border-primary-200 bg-white/80 hover:bg-primary-50 text-primary-900 shadow-sm",
+        "border border-primary-200 dark:border-white/20 bg-white/80 dark:bg-white/10 hover:bg-primary-50 dark:hover:bg-white/20 text-primary-900 dark:text-white shadow-sm",
       ghost:
-        "text-foreground hover:bg-primary-50/70 hover:text-primary",
+        "text-foreground dark:text-slate-200 hover:bg-primary-50/70 dark:hover:bg-white/10 hover:text-primary dark:hover:text-[#49C4CA]",
       link:
         "text-primary underline-offset-4 hover:underline p-0 h-auto font-medium",
     };

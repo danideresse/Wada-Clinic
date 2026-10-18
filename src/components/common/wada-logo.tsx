@@ -10,7 +10,7 @@ interface WadaLogoProps {
 
 /**
  * Exact Mark from WADA SVG LOGO.svg
- * ViewBox tailored to the emblem paths (approx 200 60 to 450 200)
+ * ViewBox tailored to the emblem paths (approx 210 65 to 450 200)
  */
 export function WadaOfficialSymbol({
   className,
@@ -27,6 +27,7 @@ export function WadaOfficialSymbol({
       : colorVariant === "navy"
       ? "#00395C"
       : color;
+
   return (
     <svg
       viewBox="210 65 240 135"
@@ -73,14 +74,14 @@ export function WadaLogo({
           alt="WADA HOSPITAL – Your Health, Our Promise"
           width={220}
           height={110}
-          className="h-full w-auto object-contain"
+          className="h-full w-auto object-contain dark:brightness-200"
           priority
         />
       </div>
     );
   }
 
-  // Single-line clean modern brand mark (No two-line stacked text!)
+  // Single-line clean modern brand mark (High contrast in both light and dark modes!)
   if (variant === "single-line") {
     return (
       <div className={cn("inline-flex items-center gap-2.5 select-none group", sizeHeights[size], className)}>
@@ -95,11 +96,11 @@ export function WadaLogo({
         </div>
         <span
           className={cn(
-            "font-extrabold tracking-tight font-heading uppercase whitespace-nowrap",
+            "font-extrabold tracking-tight font-heading uppercase whitespace-nowrap transition-colors",
             size === "sm" && "text-base",
             size === "md" && "text-xl",
             size === "lg" && "text-2xl",
-            isWhite ? "text-white" : "text-[#00395C]"
+            isWhite ? "text-white" : "text-[#00395C] dark:text-white"
           )}
         >
           WADA HOSPITAL
@@ -130,11 +131,11 @@ export function WadaLogo({
         />
         <span
           className={cn(
-            "font-extrabold tracking-tight font-heading uppercase whitespace-nowrap leading-none",
+            "font-extrabold tracking-tight font-heading uppercase whitespace-nowrap leading-none transition-colors",
             size === "sm" && "text-base",
             size === "md" && "text-xl",
             size === "lg" && "text-2xl",
-            isWhite ? "text-white" : "text-[#00395C]"
+            isWhite ? "text-white" : "text-[#00395C] dark:text-white"
           )}
         >
           WADA HOSPITAL
@@ -146,7 +147,7 @@ export function WadaLogo({
           size === "sm" && "text-[9px]",
           size === "md" && "text-[10px]",
           size === "lg" && "text-xs",
-          isWhite ? "text-[#49C4CA]" : "text-[#2E8DBB]"
+          isWhite ? "text-[#49C4CA]" : "text-[#2E8DBB] dark:text-[#49C4CA]"
         )}
       >
         YOUR HEALTH , OUR PROMISE

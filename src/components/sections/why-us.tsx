@@ -55,17 +55,17 @@ const VALUE_PROPS = [
 
 export function WhyUsSection() {
   return (
-    <section className="py-16 lg:py-24 bg-white">
+    <section className="py-16 lg:py-24 bg-white dark:bg-[#001724] transition-colors">
       <div className="container">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-14 lg:mb-18 space-y-3">
-          <span className="text-xs font-bold uppercase tracking-wider text-[#2E8DBB]">
+          <span className="text-xs font-bold uppercase tracking-wider text-[#2E8DBB] dark:text-[#49C4CA]">
             Why Choose Us
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#00395C] font-heading tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#00395C] dark:text-white font-heading tracking-tight">
             Advanced Clinical Care Focused on You
           </h2>
-          <p className="text-base text-[#1B2B33]/80 leading-relaxed">
+          <p className="text-base text-[#1B2B33]/80 dark:text-slate-300 leading-relaxed">
             Delivering advanced, compassionate specialty care and 24/7 medical excellence to the heart of Adama and beyond.
           </p>
         </div>
@@ -77,30 +77,30 @@ export function WhyUsSection() {
             return (
               <div
                 key={idx}
-                className="group relative rounded-3xl border border-[#E9EEF1] bg-gradient-to-br from-white via-[#F2F8FB] to-[#e0f1f8]/40 p-8 shadow-soft transition-all duration-300 hover:shadow-card hover:border-[#2E8DBB]/40 flex flex-col justify-between"
+                className="group relative rounded-3xl border border-[#E9EEF1] dark:border-white/10 bg-gradient-to-br from-white via-[#F2F8FB] to-[#e0f1f8]/40 dark:from-[#002238] dark:via-[#002238] dark:to-[#002b45] p-8 shadow-soft transition-all duration-300 hover:shadow-card hover:border-[#2E8DBB]/40 flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center gap-4 mb-5">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#00395C] text-[#49C4CA] shadow-soft group-hover:scale-105 transition-transform">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#00395C] dark:bg-[#2E8DBB] text-[#49C4CA] dark:text-white shadow-soft group-hover:scale-105 transition-transform">
                       <Icon className="h-6 w-6 stroke-[2]" />
                     </div>
-                    <h3 className="text-xl font-bold text-[#00395C] font-heading">
+                    <h3 className="text-xl font-bold text-[#00395C] dark:text-white font-heading">
                       {prop.title}
                     </h3>
                   </div>
 
-                  <p className="text-sm text-[#1B2B33]/85 leading-relaxed mb-6">
+                  <p className="text-sm text-[#1B2B33]/85 dark:text-slate-300 leading-relaxed mb-6">
                     {prop.description}
                   </p>
                 </div>
 
-                <ul className="space-y-2 border-t border-[#E9EEF1] pt-5">
+                <ul className="space-y-2 border-t border-[#E9EEF1] dark:border-white/10 pt-5">
                   {prop.points.map((point, pIdx) => (
                     <li
                       key={pIdx}
-                      className="text-xs sm:text-sm text-[#1B2B33] flex items-center gap-2.5"
+                      className="text-xs sm:text-sm text-[#1B2B33] dark:text-slate-200 flex items-center gap-2.5"
                     >
-                      <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#e0f1f8] text-[#2E8DBB]">
+                      <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#e0f1f8] dark:bg-white/10 text-[#2E8DBB] dark:text-[#49C4CA]">
                         <Check className="h-3 w-3 stroke-[3]" />
                       </span>
                       <span>{point}</span>

@@ -41,26 +41,27 @@ export function ContactForm() {
         setServerError(res.message || "Failed to submit message.");
       }
     } catch {
-      setServerError("An unexpected error occurred. Please call or email the clinic directly.");
+      setServerError("An unexpected error occurred. Please call or email the hospital directly.");
     }
   };
 
   if (submissionResult?.success) {
     return (
-      <div className="rounded-3xl border border-emerald-200 bg-white p-8 md:p-10 shadow-card text-center animate-in fade-in duration-300">
-        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-100 text-emerald-600 mb-4">
+      <div className="rounded-3xl border border-emerald-200 dark:border-emerald-800 bg-white dark:bg-[#002238] p-8 md:p-10 shadow-card text-center animate-in fade-in duration-300">
+        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 mb-4">
           <CheckCircle2 className="h-8 w-8 stroke-[2.2]" />
         </div>
-        <h3 className="text-2xl font-bold text-slate-900 font-heading mb-2">
+        <h3 className="text-2xl font-bold text-slate-900 dark:text-white font-heading mb-2">
           Message Sent Successfully
         </h3>
-        <p className="text-slate-600 max-w-md mx-auto mb-6 text-sm leading-relaxed">
+        <p className="text-slate-600 dark:text-slate-300 max-w-md mx-auto mb-6 text-sm leading-relaxed">
           {submissionResult.message}
         </p>
         <Button
           type="button"
           variant="outline"
           onClick={() => setSubmissionResult(null)}
+          className="border-slate-300 dark:border-white/20 text-slate-700 dark:text-slate-200"
         >
           Send Another Message
         </Button>
@@ -71,12 +72,12 @@ export function ContactForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="rounded-3xl border border-slate-200 bg-white p-6 md:p-10 shadow-card"
+      className="rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-[#002238] p-6 md:p-10 shadow-card transition-colors"
       noValidate
     >
       {serverError && (
-        <div className="mb-6 rounded-2xl bg-rose-50 border border-rose-200 p-4 text-rose-800 text-sm flex items-start gap-3">
-          <AlertCircle className="h-5 w-5 shrink-0 text-rose-600 mt-0.5" />
+        <div className="mb-6 rounded-2xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-900 p-4 text-rose-800 dark:text-rose-300 text-sm flex items-start gap-3">
+          <AlertCircle className="h-5 w-5 shrink-0 text-rose-600 dark:text-rose-400 mt-0.5" />
           <span>{serverError}</span>
         </div>
       )}
@@ -98,40 +99,40 @@ export function ContactForm() {
           <div>
             <label
               htmlFor="contactFullName"
-              className="block text-sm font-medium text-slate-800 mb-1.5"
+              className="block text-sm font-medium text-slate-800 dark:text-slate-200 mb-1.5"
             >
               Your Name <span className="text-rose-500">*</span>
             </label>
             <input
               id="contactFullName"
               type="text"
-              placeholder="e.g. Jane Smith"
-              className="w-full rounded-xl border border-slate-300 bg-slate-50/50 px-4 py-3 text-sm text-slate-900 transition focus:border-primary focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/20"
+              placeholder="e.g. Abebech Gobena"
+              className="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50/50 dark:bg-[#001724] px-4 py-3 text-sm text-slate-900 dark:text-white transition focus:border-[#2E8DBB] focus:bg-white dark:focus:bg-[#001724] focus:outline-none focus:ring-2 focus:ring-[#2E8DBB]/20"
               {...register("fullName")}
               aria-invalid={!!errors.fullName}
             />
             {errors.fullName && (
-              <p className="mt-1 text-xs text-rose-600">{errors.fullName.message}</p>
+              <p className="mt-1 text-xs text-rose-600 dark:text-rose-400">{errors.fullName.message}</p>
             )}
           </div>
 
           <div>
             <label
               htmlFor="contactEmail"
-              className="block text-sm font-medium text-slate-800 mb-1.5"
+              className="block text-sm font-medium text-slate-800 dark:text-slate-200 mb-1.5"
             >
               Email Address <span className="text-rose-500">*</span>
             </label>
             <input
               id="contactEmail"
               type="email"
-              placeholder="jane@example.com"
-              className="w-full rounded-xl border border-slate-300 bg-slate-50/50 px-4 py-3 text-sm text-slate-900 transition focus:border-primary focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/20"
+              placeholder="name@example.com"
+              className="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50/50 dark:bg-[#001724] px-4 py-3 text-sm text-slate-900 dark:text-white transition focus:border-[#2E8DBB] focus:bg-white dark:focus:bg-[#001724] focus:outline-none focus:ring-2 focus:ring-[#2E8DBB]/20"
               {...register("email")}
               aria-invalid={!!errors.email}
             />
             {errors.email && (
-              <p className="mt-1 text-xs text-rose-600">{errors.email.message}</p>
+              <p className="mt-1 text-xs text-rose-600 dark:text-rose-400">{errors.email.message}</p>
             )}
           </div>
         </div>
@@ -140,15 +141,15 @@ export function ContactForm() {
           <div>
             <label
               htmlFor="contactPhone"
-              className="block text-sm font-medium text-slate-800 mb-1.5"
+              className="block text-sm font-medium text-slate-800 dark:text-slate-200 mb-1.5"
             >
               Phone Number (Optional)
             </label>
             <input
               id="contactPhone"
               type="tel"
-              placeholder="(555) 000-0000"
-              className="w-full rounded-xl border border-slate-300 bg-slate-50/50 px-4 py-3 text-sm text-slate-900 transition focus:border-primary focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/20"
+              placeholder="0997040408"
+              className="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50/50 dark:bg-[#001724] px-4 py-3 text-sm text-slate-900 dark:text-white transition focus:border-[#2E8DBB] focus:bg-white dark:focus:bg-[#001724] focus:outline-none focus:ring-2 focus:ring-[#2E8DBB]/20"
               {...register("phone")}
             />
           </div>
@@ -156,20 +157,20 @@ export function ContactForm() {
           <div>
             <label
               htmlFor="contactSubject"
-              className="block text-sm font-medium text-slate-800 mb-1.5"
+              className="block text-sm font-medium text-slate-800 dark:text-slate-200 mb-1.5"
             >
               Subject <span className="text-rose-500">*</span>
             </label>
             <input
               id="contactSubject"
               type="text"
-              placeholder="e.g. Question about insurance coverage"
-              className="w-full rounded-xl border border-slate-300 bg-slate-50/50 px-4 py-3 text-sm text-slate-900 transition focus:border-primary focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/20"
+              placeholder="e.g. Question about surgery consultation"
+              className="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50/50 dark:bg-[#001724] px-4 py-3 text-sm text-slate-900 dark:text-white transition focus:border-[#2E8DBB] focus:bg-white dark:focus:bg-[#001724] focus:outline-none focus:ring-2 focus:ring-[#2E8DBB]/20"
               {...register("subject")}
               aria-invalid={!!errors.subject}
             />
             {errors.subject && (
-              <p className="mt-1 text-xs text-rose-600">{errors.subject.message}</p>
+              <p className="mt-1 text-xs text-rose-600 dark:text-rose-400">{errors.subject.message}</p>
             )}
           </div>
         </div>
@@ -177,20 +178,20 @@ export function ContactForm() {
         <div>
           <label
             htmlFor="contactMessage"
-            className="block text-sm font-medium text-slate-800 mb-1.5"
+            className="block text-sm font-medium text-slate-800 dark:text-slate-200 mb-1.5"
           >
             Your Message <span className="text-rose-500">*</span>
           </label>
           <textarea
             id="contactMessage"
             rows={5}
-            placeholder="How can our clinical or administrative team assist you today?"
-            className="w-full rounded-xl border border-slate-300 bg-slate-50/50 px-4 py-3 text-sm text-slate-900 transition focus:border-primary focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/20 resize-y"
+            placeholder="How can our clinical team assist you today?"
+            className="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50/50 dark:bg-[#001724] px-4 py-3 text-sm text-slate-900 dark:text-white transition focus:border-[#2E8DBB] focus:bg-white dark:focus:bg-[#001724] focus:outline-none focus:ring-2 focus:ring-[#2E8DBB]/20 resize-y"
             {...register("message")}
             aria-invalid={!!errors.message}
           />
           {errors.message && (
-            <p className="mt-1 text-xs text-rose-600">{errors.message.message}</p>
+            <p className="mt-1 text-xs text-rose-600 dark:text-rose-400">{errors.message.message}</p>
           )}
         </div>
 
@@ -199,7 +200,7 @@ export function ContactForm() {
             type="submit"
             size="lg"
             isLoading={isSubmitting}
-            className="w-full sm:w-auto bg-[#2E8DBB] hover:bg-[#1e5e80] text-white font-bold"
+            className="w-full sm:w-auto bg-[#2E8DBB] hover:bg-[#1e5e80] text-white font-bold rounded-xl"
           >
             <Send className="h-4 w-4 mr-2" />
             <span>Send Message</span>

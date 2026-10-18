@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    /* Wada Hospital Official Brand Palette */
+    /* Wada Hospital Official Brand Palette - Light Mode */
     /* Pale Aqua: #F2F8FB */
     --background: 200 44% 97%;
     /* Ink: #1B2B33 */
@@ -40,29 +40,30 @@
   }
 
   .dark {
-    --background: 202 100% 10%;
-    --foreground: 200 30% 96%;
+    /* Wada Hospital Dark Mode - Deep Midnight Medical Navy */
+    --background: 203 100% 7%; /* #001724 */
+    --foreground: 200 20% 96%; /* #E9EEF1 */
 
-    --card: 202 100% 12%;
-    --card-foreground: 200 30% 96%;
+    --card: 202 100% 11%; /* #002238 */
+    --card-foreground: 200 20% 96%;
 
-    --primary: 197 59% 53%;
+    --primary: 197 59% 53%; /* #3DA8D2 */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 202 60% 18%;
-    --secondary-foreground: 200 30% 96%;
+    --secondary: 202 50% 16%;
+    --secondary-foreground: 200 20% 96%;
 
-    --accent: 183 54% 54%;
+    --accent: 183 54% 54%; /* #49C4CA */
     --accent-foreground: 0 0% 100%;
 
-    --muted: 202 50% 18%;
-    --muted-foreground: 200 20% 65%;
+    --muted: 202 45% 15%;
+    --muted-foreground: 200 18% 68%;
 
-    --destructive: 0 62% 35%;
+    --destructive: 0 62% 45%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 202 50% 20%;
-    --input: 202 50% 20%;
+    --border: 202 40% 18%;
+    --input: 202 40% 18%;
     --ring: 197 59% 53%;
   }
 
@@ -76,7 +77,7 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased selection:bg-[#c7e5f3] selection:text-[#00395C];
+    @apply bg-background text-foreground antialiased transition-colors duration-200 selection:bg-[#c7e5f3] selection:text-[#00395C] dark:selection:bg-[#00395C] dark:selection:text-[#49C4CA];
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 
@@ -97,7 +98,7 @@
   }
 }
 
-/* Wada Hospital Brand Gradient */
+/* Wada Hospital Brand Gradients */
 .brand-gradient {
   background: linear-gradient(135deg, #2E8DBB 0%, #49C4CA 100%);
 }
@@ -112,11 +113,24 @@
   -webkit-text-fill-color: transparent;
 }
 
+.dark .text-gradient {
+  background: linear-gradient(135deg, #FFFFFF 0%, #3DA8D2 55%, #49C4CA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .glass-panel {
-  background: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(233, 238, 241, 0.8);
+  border: 1px solid rgba(233, 238, 241, 0.9);
+}
+
+.dark .glass-panel {
+  background: rgba(0, 34, 56, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 /* Custom subtle scrollbar */
@@ -134,6 +148,14 @@
   border-radius: 9999px;
 }
 
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.18);
+}
+
 ::-webkit-scrollbar-thumb:hover {
   background: #9ed3eb;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
 }

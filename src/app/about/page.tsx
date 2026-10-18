@@ -4,20 +4,14 @@ import Link from "next/link";
 import { siteConfig } from "@/data/site-config";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { WadaLogoMark } from "@/components/common/wada-logo";
+import { WadaOfficialSymbol } from "@/components/common/wada-logo";
 import {
   ShieldCheck,
   HeartHandshake,
   Microscope,
   Award,
   Users,
-  Clock,
   Sparkles,
-  Bed,
-  FlaskConical,
-  Pill,
-  Building2,
-  CalendarCheck,
   PhoneCall,
 } from "lucide-react";
 
@@ -83,54 +77,54 @@ const FACILITIES = [
 
 export default function AboutPage() {
   return (
-    <div className="bg-[#F2F8FB]">
+    <div className="bg-[#F2F8FB] dark:bg-[#001724] transition-colors">
       {/* Page Header */}
-      <section className="bg-gradient-to-b from-[#e0f1f8]/80 via-white to-[#F2F8FB] py-16 lg:py-20 border-b border-[#E9EEF1]">
+      <section className="bg-gradient-to-b from-[#e0f1f8]/80 via-white to-[#F2F8FB] dark:from-[#002b45]/30 dark:via-[#001724] dark:to-[#001724] py-16 lg:py-20 border-b border-[#E9EEF1] dark:border-white/10">
         <div className="container max-w-4xl text-center space-y-4">
-          <Badge className="bg-[#e0f1f8] text-[#00395C] border-[#2E8DBB]/30 font-bold">
+          <Badge className="bg-[#e0f1f8] dark:bg-white/10 text-[#00395C] dark:text-[#49C4CA] border-[#2E8DBB]/30 dark:border-white/10 font-bold">
             About Wada Hospital
           </Badge>
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-[#00395C] font-heading tracking-tight">
+          <h1 className="text-4xl sm:text-5xl font-extrabold text-[#00395C] dark:text-white font-heading tracking-tight">
             Your Health, Our Promise
           </h1>
-          <p className="text-lg text-[#1B2B33]/85 leading-relaxed max-w-2xl mx-auto">
+          <p className="text-lg text-[#1B2B33]/85 dark:text-slate-300 leading-relaxed max-w-2xl mx-auto">
             Delivering advanced, compassionate specialty care and 24/7 medical excellence to the heart of Adama and beyond.
           </p>
         </div>
       </section>
 
-      {/* Mission & Vision Section (from Questionnaire) */}
-      <section className="py-16 lg:py-24 bg-white border-b border-[#E9EEF1]">
+      {/* Mission & Vision Section */}
+      <section className="py-16 lg:py-24 bg-white dark:bg-[#001c2e] border-b border-[#E9EEF1] dark:border-white/10 transition-colors">
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
             {/* Mission Card */}
-            <div className="rounded-3xl border border-[#E9EEF1] bg-gradient-to-br from-[#F2F8FB] to-white p-8 sm:p-10 shadow-soft space-y-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#00395C] text-[#49C4CA] shadow-soft">
+            <div className="rounded-3xl border border-[#E9EEF1] dark:border-white/10 bg-gradient-to-br from-[#F2F8FB] to-white dark:from-[#002238] dark:to-[#002238] p-8 sm:p-10 shadow-soft space-y-4">
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#00395C] dark:bg-[#2E8DBB] text-[#49C4CA] dark:text-white shadow-soft">
                 <Sparkles className="h-6 w-6" />
               </div>
-              <span className="text-xs font-bold uppercase tracking-wider text-[#2E8DBB] block">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#2E8DBB] dark:text-[#49C4CA] block">
                 Our Purpose
               </span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#00395C] font-heading">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#00395C] dark:text-white font-heading">
                 Mission Statement
               </h2>
-              <blockquote className="text-base sm:text-lg text-[#1B2B33] leading-relaxed italic border-l-4 border-[#2E8DBB] pl-4">
+              <blockquote className="text-base sm:text-lg text-[#1B2B33] dark:text-slate-200 leading-relaxed italic border-l-4 border-[#2E8DBB] pl-4">
                 &ldquo;{siteConfig.mission}&rdquo;
               </blockquote>
             </div>
 
             {/* Vision Card */}
-            <div className="rounded-3xl border border-[#E9EEF1] bg-gradient-to-br from-[#F2F8FB] to-white p-8 sm:p-10 shadow-soft space-y-4">
+            <div className="rounded-3xl border border-[#E9EEF1] dark:border-white/10 bg-gradient-to-br from-[#F2F8FB] to-white dark:from-[#002238] dark:to-[#002238] p-8 sm:p-10 shadow-soft space-y-4">
               <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#2E8DBB] text-white shadow-soft">
                 <Award className="h-6 w-6" />
               </div>
-              <span className="text-xs font-bold uppercase tracking-wider text-[#2E8DBB] block">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#2E8DBB] dark:text-[#49C4CA] block">
                 Our Future
               </span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#00395C] font-heading">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#00395C] dark:text-white font-heading">
                 Vision Statement
               </h2>
-              <blockquote className="text-base sm:text-lg text-[#1B2B33] leading-relaxed italic border-l-4 border-[#49C4CA] pl-4">
+              <blockquote className="text-base sm:text-lg text-[#1B2B33] dark:text-slate-200 leading-relaxed italic border-l-4 border-[#49C4CA] pl-4">
                 &ldquo;{siteConfig.vision}&rdquo;
               </blockquote>
             </div>
@@ -139,17 +133,17 @@ export default function AboutPage() {
       </section>
 
       {/* Hospital Identity & Story */}
-      <section className="py-16 lg:py-24 bg-[#F2F8FB]">
+      <section className="py-16 lg:py-24 bg-[#F2F8FB] dark:bg-[#001724] transition-colors">
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-6 space-y-6">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#2E8DBB]">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#2E8DBB] dark:text-[#49C4CA]">
                 Hospital Overview
               </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#00395C] font-heading tracking-tight leading-tight">
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#00395C] dark:text-white font-heading tracking-tight leading-tight">
                 A steady hand in healthcare for Adama and the wider region.
               </h2>
-              <div className="space-y-4 text-[#1B2B33]/85 leading-relaxed text-base">
+              <div className="space-y-4 text-[#1B2B33]/85 dark:text-slate-300 leading-relaxed text-base">
                 <p>
                   Wada Hospital exists to provide care that people can rely on — delivered with warmth, competence, and dignity. Every touchpoint of our hospital, from the mark on our entrance to the tone of a nurse&apos;s note, carries that same sense of reassurance.
                 </p>
@@ -162,20 +156,20 @@ export default function AboutPage() {
               </div>
 
               <div className="pt-2 flex flex-col sm:flex-row gap-4">
-                <Button asChild size="lg" className="bg-[#2E8DBB] hover:bg-[#1e5e80] text-white font-bold">
+                <Button asChild size="lg" className="bg-[#2E8DBB] hover:bg-[#1e5e80] dark:bg-[#2E8DBB] dark:hover:bg-[#3DA8D2] text-white font-bold rounded-full px-7">
                   <a href={`tel:${siteConfig.phone}`} className="flex items-center gap-2">
                     <PhoneCall className="h-5 w-5" />
                     <span>Contact: {siteConfig.phoneDisplay}</span>
                   </a>
                 </Button>
-                <Button asChild size="lg" variant="outline" className="border-[#00395C]/30 text-[#00395C] font-bold">
+                <Button asChild size="lg" variant="outline" className="border-[#00395C]/30 dark:border-white/20 text-[#00395C] dark:text-white font-bold hover:bg-white dark:hover:bg-white/10 rounded-full px-7">
                   <Link href="/services">Explore 12+ Departments</Link>
                 </Button>
               </div>
             </div>
 
             <div className="lg:col-span-6 relative">
-              <div className="relative aspect-[4/3] w-full rounded-3xl overflow-hidden shadow-card border-4 border-white bg-slate-100">
+              <div className="relative aspect-[4/3] w-full rounded-3xl overflow-hidden shadow-card border-4 border-white dark:border-[#002b45] bg-slate-100 dark:bg-slate-800">
                 <Image
                   src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=1200&auto=format&fit=crop"
                   alt="Wada Hospital Building and Wards in Adama, Ethiopia"
@@ -187,14 +181,14 @@ export default function AboutPage() {
 
               <div className="absolute -bottom-6 -left-6 rounded-2xl glass-panel p-5 shadow-card max-w-xs hidden sm:block">
                 <div className="flex items-center gap-3">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white shadow-soft p-1">
-                    <WadaLogoMark className="h-9 w-9" colorVariant="gradient" />
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white dark:bg-[#001724] shadow-soft p-1">
+                    <WadaOfficialSymbol className="h-9 w-9" color="#2E8DBB" />
                   </div>
                   <div>
-                    <span className="text-sm font-bold text-[#00395C] block">
+                    <span className="text-sm font-bold text-[#00395C] dark:text-white block">
                       30 Inpatient Beds
                     </span>
-                    <span className="text-xs text-[#2E8DBB] font-semibold block">
+                    <span className="text-xs text-[#2E8DBB] dark:text-[#49C4CA] font-semibold block">
                       General & Private Wards
                     </span>
                   </div>
@@ -206,16 +200,16 @@ export default function AboutPage() {
       </section>
 
       {/* Brand Values */}
-      <section className="py-16 lg:py-24 bg-white border-y border-[#E9EEF1]">
+      <section className="py-16 lg:py-24 bg-white dark:bg-[#001c2e] border-y border-[#E9EEF1] dark:border-white/10 transition-colors">
         <div className="container">
           <div className="text-center max-w-2xl mx-auto mb-14 space-y-3">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#2E8DBB]">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#2E8DBB] dark:text-[#49C4CA]">
               Brand Principles
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#00395C] font-heading tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#00395C] dark:text-white font-heading tracking-tight">
               Compassion · Trust · Clarity · Vitality
             </h2>
-            <p className="text-base text-[#1B2B33]/80">
+            <p className="text-base text-[#1B2B33]/80 dark:text-slate-300">
               Caring, dependable, calm, and modern — a healthcare partner that feels like a steady hand.
             </p>
           </div>
@@ -226,16 +220,16 @@ export default function AboutPage() {
               return (
                 <div
                   key={idx}
-                  className="rounded-2xl border border-[#E9EEF1] bg-[#F2F8FB] p-6 shadow-soft hover:shadow-card transition flex flex-col justify-between"
+                  className="rounded-2xl border border-[#E9EEF1] dark:border-white/10 bg-[#F2F8FB] dark:bg-[#002238] p-6 shadow-soft hover:shadow-card transition flex flex-col justify-between"
                 >
                   <div className="space-y-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white text-[#2E8DBB] shadow-sm">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white dark:bg-[#001724] text-[#2E8DBB] dark:text-[#49C4CA] shadow-sm">
                       <Icon className="h-6 w-6" />
                     </div>
-                    <h3 className="text-lg font-bold text-[#00395C] font-heading">
+                    <h3 className="text-lg font-bold text-[#00395C] dark:text-white font-heading">
                       {val.title}
                     </h3>
-                    <p className="text-xs sm:text-sm text-[#1B2B33]/80 leading-relaxed">
+                    <p className="text-xs sm:text-sm text-[#1B2B33]/80 dark:text-slate-300 leading-relaxed">
                       {val.description}
                     </p>
                   </div>
@@ -247,16 +241,16 @@ export default function AboutPage() {
       </section>
 
       {/* Facilities Showcase */}
-      <section className="py-16 lg:py-24 bg-[#F2F8FB]">
+      <section className="py-16 lg:py-24 bg-[#F2F8FB] dark:bg-[#001724] transition-colors">
         <div className="container">
           <div className="text-center max-w-2xl mx-auto mb-14 space-y-3">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#2E8DBB]">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#2E8DBB] dark:text-[#49C4CA]">
               Inpatient & Outpatient Facilities
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#00395C] font-heading tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#00395C] dark:text-white font-heading tracking-tight">
               Hospital Facilities Designed for Healing
             </h2>
-            <p className="text-base text-[#1B2B33]/80">
+            <p className="text-base text-[#1B2B33]/80 dark:text-slate-300">
               Modern clinical spaces supporting comprehensive inpatient monitoring, urgent emergency stabilization, and structured outpatient clinics.
             </p>
           </div>
@@ -265,9 +259,9 @@ export default function AboutPage() {
             {FACILITIES.map((facility, idx) => (
               <div
                 key={idx}
-                className="group rounded-3xl border border-[#E9EEF1] overflow-hidden shadow-soft bg-white flex flex-col justify-between"
+                className="group rounded-3xl border border-[#E9EEF1] dark:border-white/10 overflow-hidden shadow-soft bg-white dark:bg-[#002238] flex flex-col justify-between"
               >
-                <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-100">
+                <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-100 dark:bg-slate-800">
                   <Image
                     src={facility.image}
                     alt={facility.title}
@@ -278,13 +272,13 @@ export default function AboutPage() {
                 </div>
                 <div className="p-6 space-y-2 flex-1 flex flex-col justify-between">
                   <div>
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-[#2E8DBB] block mb-1">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-[#2E8DBB] dark:text-[#49C4CA] block mb-1">
                       {facility.subtitle}
                     </span>
-                    <h3 className="text-lg font-bold text-[#00395C] font-heading">
+                    <h3 className="text-lg font-bold text-[#00395C] dark:text-white font-heading">
                       {facility.title}
                     </h3>
-                    <p className="text-xs sm:text-sm text-[#1B2B33]/75 leading-relaxed mt-2">
+                    <p className="text-xs sm:text-sm text-[#1B2B33]/75 dark:text-slate-300 leading-relaxed mt-2">
                       {facility.description}
                     </p>
                   </div>

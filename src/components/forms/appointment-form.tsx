@@ -10,12 +10,10 @@ import { doctorsData } from "@/data/doctors";
 import { siteConfig } from "@/data/site-config";
 import { Button } from "@/components/ui/button";
 import {
-  CalendarCheck,
   CheckCircle2,
   AlertCircle,
   Clock,
   Phone,
-  Sparkles,
   ArrowRight,
 } from "lucide-react";
 import Link from "next/link";
@@ -64,45 +62,45 @@ export function AppointmentForm({
       } else {
         setServerError(res.message || "Failed to submit request.");
       }
-    } catch (err) {
-      setServerError("An unexpected network error occurred. Please call the clinic directly.");
+    } catch {
+      setServerError("An unexpected network error occurred. Please call the hospital directly.");
     }
   };
 
   if (submissionResult?.success) {
     return (
-      <div className="rounded-3xl border border-emerald-200 bg-white p-8 md:p-10 shadow-card text-center animate-in fade-in zoom-in-95 duration-300">
-        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-emerald-100 text-emerald-600 mb-6">
+      <div className="rounded-3xl border border-emerald-200 dark:border-emerald-800 bg-white dark:bg-[#002238] p-8 md:p-10 shadow-card text-center animate-in fade-in zoom-in-95 duration-300">
+        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 mb-6">
           <CheckCircle2 className="h-9 w-9 stroke-[2.2]" />
         </div>
-        <span className="inline-block px-3 py-1 text-xs font-semibold uppercase tracking-wider text-emerald-700 bg-emerald-50 rounded-full mb-3">
+        <span className="inline-block px-3 py-1 text-xs font-semibold uppercase tracking-wider text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/40 rounded-full mb-3">
           Request Received
         </span>
-        <h3 className="text-2xl md:text-3xl font-bold text-slate-900 font-heading mb-3">
+        <h3 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white font-heading mb-3">
           Appointment Scheduled for Confirmation
         </h3>
-        <p className="text-slate-600 max-w-md mx-auto mb-6 leading-relaxed">
+        <p className="text-slate-600 dark:text-slate-300 max-w-md mx-auto mb-6 leading-relaxed">
           {submissionResult.message}
         </p>
 
         {submissionResult.bookingReference && (
-          <div className="rounded-2xl bg-slate-50 border border-slate-200 p-4 max-w-xs mx-auto mb-8">
+          <div className="rounded-2xl bg-slate-50 dark:bg-[#001724] border border-slate-200 dark:border-slate-800 p-4 max-w-xs mx-auto mb-8">
             <span className="text-xs uppercase tracking-wider text-slate-400 font-medium block mb-1">
               Booking Tracking ID
             </span>
-            <span className="font-mono text-lg font-bold text-primary tracking-wide">
+            <span className="font-mono text-lg font-bold text-[#2E8DBB] dark:text-[#49C4CA] tracking-wide">
               {submissionResult.bookingReference}
             </span>
           </div>
         )}
 
-        <div className="border-t border-slate-100 pt-6 text-sm text-slate-500 max-w-md mx-auto space-y-3">
+        <div className="border-t border-slate-100 dark:border-white/10 pt-6 text-sm text-slate-500 dark:text-slate-400 max-w-md mx-auto space-y-3">
           <p>
             Need urgent medical help or immediate verification? Reach our reception staff directly:
           </p>
           <a
             href={`tel:${siteConfig.phone}`}
-            className="inline-flex items-center gap-2 font-semibold text-primary hover:underline"
+            className="inline-flex items-center gap-2 font-semibold text-[#2E8DBB] dark:text-[#49C4CA] hover:underline"
           >
             <Phone className="h-4 w-4" />
             <span>{siteConfig.phoneDisplay}</span>
@@ -114,10 +112,11 @@ export function AppointmentForm({
             type="button"
             variant="outline"
             onClick={() => setSubmissionResult(null)}
+            className="border-slate-300 dark:border-white/20 text-slate-700 dark:text-slate-200"
           >
             Book Another Appointment
           </Button>
-          <Button asChild variant="default">
+          <Button asChild className="bg-[#2E8DBB] hover:bg-[#1e5e80] text-white font-bold">
             <Link href="/">Back to Home</Link>
           </Button>
         </div>
@@ -125,7 +124,7 @@ export function AppointmentForm({
     );
   }
 
-  // Get tomorrow's date string as minimum booking date
+  // Minimum date = tomorrow
   const tomorrow = new Date();
   tomorrow.setDate(tomorrow.getDate() + 1);
   const minDate = tomorrow.toISOString().split("T")[0];
@@ -133,12 +132,12 @@ export function AppointmentForm({
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="rounded-3xl border border-slate-200 bg-white p-6 md:p-10 shadow-card"
+      className="rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-[#002238] p-6 md:p-10 shadow-card transition-colors"
       noValidate
     >
       {serverError && (
-        <div className="mb-6 rounded-2xl bg-rose-50 border border-rose-200 p-4 text-rose-800 text-sm flex items-start gap-3">
-          <AlertCircle className="h-5 w-5 shrink-0 text-rose-600 mt-0.5" />
+        <div className="mb-6 rounded-2xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-900 p-4 text-rose-800 dark:text-rose-300 text-sm flex items-start gap-3">
+          <AlertCircle className="h-5 w-5 shrink-0 text-rose-600 dark:text-rose-400 mt-0.5" />
           <div>
             <strong className="font-semibold block">Submission Error</strong>
             <span>{serverError}</span>
@@ -146,7 +145,7 @@ export function AppointmentForm({
         </div>
       )}
 
-      {/* Honeypot field - visually hidden */}
+      {/* Honeypot field */}
       <div className="hidden" aria-hidden="true">
         <label htmlFor="botWebsiteCheck">Do not fill this</label>
         <input
@@ -160,11 +159,11 @@ export function AppointmentForm({
 
       <div className="space-y-6">
         <div>
-          <h3 className="text-xl font-bold text-slate-900 font-heading mb-1">
+          <h3 className="text-xl font-bold text-slate-900 dark:text-white font-heading mb-1">
             Patient Information
           </h3>
-          <p className="text-sm text-slate-500">
-            Please provide accurate details so our medical receptionist can confirm your slot.
+          <p className="text-sm text-slate-500 dark:text-slate-400">
+            Please provide accurate details so our medical coordinator can confirm your outpatient slot.
           </p>
         </div>
 
@@ -173,20 +172,20 @@ export function AppointmentForm({
           <div>
             <label
               htmlFor="fullName"
-              className="block text-sm font-medium text-slate-800 mb-1.5"
+              className="block text-sm font-medium text-slate-800 dark:text-slate-200 mb-1.5"
             >
               Full Name <span className="text-rose-500">*</span>
             </label>
             <input
               id="fullName"
               type="text"
-              placeholder="e.g. John Doe"
-              className="w-full rounded-xl border border-slate-300 bg-slate-50/50 px-4 py-3 text-sm text-slate-900 transition-colors focus:border-primary focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/20"
+              placeholder="e.g. Abebe Bikila"
+              className="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50/50 dark:bg-[#001724] px-4 py-3 text-sm text-slate-900 dark:text-white transition-colors focus:border-[#2E8DBB] focus:bg-white dark:focus:bg-[#001724] focus:outline-none focus:ring-2 focus:ring-[#2E8DBB]/20"
               {...register("fullName")}
               aria-invalid={!!errors.fullName}
             />
             {errors.fullName && (
-              <p className="mt-1 text-xs text-rose-600">{errors.fullName.message}</p>
+              <p className="mt-1 text-xs text-rose-600 dark:text-rose-400">{errors.fullName.message}</p>
             )}
           </div>
 
@@ -194,7 +193,7 @@ export function AppointmentForm({
           <div>
             <label
               htmlFor="email"
-              className="block text-sm font-medium text-slate-800 mb-1.5"
+              className="block text-sm font-medium text-slate-800 dark:text-slate-200 mb-1.5"
             >
               Email Address <span className="text-rose-500">*</span>
             </label>
@@ -202,12 +201,12 @@ export function AppointmentForm({
               id="email"
               type="email"
               placeholder="name@example.com"
-              className="w-full rounded-xl border border-slate-300 bg-slate-50/50 px-4 py-3 text-sm text-slate-900 transition-colors focus:border-primary focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/20"
+              className="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50/50 dark:bg-[#001724] px-4 py-3 text-sm text-slate-900 dark:text-white transition-colors focus:border-[#2E8DBB] focus:bg-white dark:focus:bg-[#001724] focus:outline-none focus:ring-2 focus:ring-[#2E8DBB]/20"
               {...register("email")}
               aria-invalid={!!errors.email}
             />
             {errors.email && (
-              <p className="mt-1 text-xs text-rose-600">{errors.email.message}</p>
+              <p className="mt-1 text-xs text-rose-600 dark:text-rose-400">{errors.email.message}</p>
             )}
           </div>
 
@@ -215,58 +214,58 @@ export function AppointmentForm({
           <div>
             <label
               htmlFor="phone"
-              className="block text-sm font-medium text-slate-800 mb-1.5"
+              className="block text-sm font-medium text-slate-800 dark:text-slate-200 mb-1.5"
             >
               Phone Number <span className="text-rose-500">*</span>
             </label>
             <input
               id="phone"
               type="tel"
-              placeholder="(555) 000-0000"
-              className="w-full rounded-xl border border-slate-300 bg-slate-50/50 px-4 py-3 text-sm text-slate-900 transition-colors focus:border-primary focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/20"
+              placeholder="0997040408"
+              className="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50/50 dark:bg-[#001724] px-4 py-3 text-sm text-slate-900 dark:text-white transition-colors focus:border-[#2E8DBB] focus:bg-white dark:focus:bg-[#001724] focus:outline-none focus:ring-2 focus:ring-[#2E8DBB]/20"
               {...register("phone")}
               aria-invalid={!!errors.phone}
             />
             {errors.phone && (
-              <p className="mt-1 text-xs text-rose-600">{errors.phone.message}</p>
+              <p className="mt-1 text-xs text-rose-600 dark:text-rose-400">{errors.phone.message}</p>
             )}
           </div>
 
           {/* Patient Status */}
           <div>
-            <label className="block text-sm font-medium text-slate-800 mb-1.5">
+            <label className="block text-sm font-medium text-slate-800 dark:text-slate-200 mb-1.5">
               Have you visited Wada Hospital before?
             </label>
             <div className="grid grid-cols-2 gap-3 pt-1">
-              <label className="flex items-center gap-2 p-2.5 rounded-xl border border-slate-200 bg-slate-50/60 cursor-pointer hover:bg-slate-100">
+              <label className="flex items-center gap-2 p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/60 dark:bg-[#001724] cursor-pointer hover:bg-slate-100 dark:hover:bg-white/5">
                 <input
                   type="radio"
                   value="no"
                   {...register("isNewPatient")}
-                  className="text-primary focus:ring-primary"
+                  className="text-[#2E8DBB] focus:ring-[#2E8DBB]"
                 />
-                <span className="text-xs font-medium text-slate-700">Returning Patient</span>
+                <span className="text-xs font-medium text-slate-700 dark:text-slate-200">Returning Patient</span>
               </label>
-              <label className="flex items-center gap-2 p-2.5 rounded-xl border border-slate-200 bg-slate-50/60 cursor-pointer hover:bg-slate-100">
+              <label className="flex items-center gap-2 p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/60 dark:bg-[#001724] cursor-pointer hover:bg-slate-100 dark:hover:bg-white/5">
                 <input
                   type="radio"
                   value="yes"
                   {...register("isNewPatient")}
-                  className="text-primary focus:ring-primary"
+                  className="text-[#2E8DBB] focus:ring-[#2E8DBB]"
                 />
-                <span className="text-xs font-medium text-slate-700">New Patient</span>
+                <span className="text-xs font-medium text-slate-700 dark:text-slate-200">New Patient</span>
               </label>
             </div>
           </div>
         </div>
 
         {/* Clinical preferences */}
-        <div className="border-t border-slate-100 pt-6">
-          <h3 className="text-xl font-bold text-slate-900 font-heading mb-1">
+        <div className="border-t border-slate-100 dark:border-white/10 pt-6">
+          <h3 className="text-xl font-bold text-slate-900 dark:text-white font-heading mb-1">
             Appointment Preferences
           </h3>
-          <p className="text-sm text-slate-500 mb-5">
-            Select the specialty, optional preferred physician, and ideal consultation timing.
+          <p className="text-sm text-slate-500 dark:text-slate-400 mb-5">
+            Select the required department, optional specialist, and ideal consultation timing.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -274,13 +273,13 @@ export function AppointmentForm({
             <div>
               <label
                 htmlFor="serviceSlug"
-                className="block text-sm font-medium text-slate-800 mb-1.5"
+                className="block text-sm font-medium text-slate-800 dark:text-slate-200 mb-1.5"
               >
-                Required Specialty / Service <span className="text-rose-500">*</span>
+                Required Specialty / Department <span className="text-rose-500">*</span>
               </label>
               <select
                 id="serviceSlug"
-                className="w-full rounded-xl border border-slate-300 bg-slate-50/50 px-4 py-3 text-sm text-slate-900 transition-colors focus:border-primary focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/20"
+                className="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50/50 dark:bg-[#001724] px-4 py-3 text-sm text-slate-900 dark:text-white transition-colors focus:border-[#2E8DBB] focus:bg-white dark:focus:bg-[#001724] focus:outline-none focus:ring-2 focus:ring-[#2E8DBB]/20"
                 {...register("serviceSlug")}
                 aria-invalid={!!errors.serviceSlug}
               >
@@ -292,7 +291,7 @@ export function AppointmentForm({
                 ))}
               </select>
               {errors.serviceSlug && (
-                <p className="mt-1 text-xs text-rose-600">{errors.serviceSlug.message}</p>
+                <p className="mt-1 text-xs text-rose-600 dark:text-rose-400">{errors.serviceSlug.message}</p>
               )}
             </div>
 
@@ -300,16 +299,16 @@ export function AppointmentForm({
             <div>
               <label
                 htmlFor="preferredDoctor"
-                className="block text-sm font-medium text-slate-800 mb-1.5"
+                className="block text-sm font-medium text-slate-800 dark:text-slate-200 mb-1.5"
               >
                 Preferred Doctor (Optional)
               </label>
               <select
                 id="preferredDoctor"
-                className="w-full rounded-xl border border-slate-300 bg-slate-50/50 px-4 py-3 text-sm text-slate-900 transition-colors focus:border-primary focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/20"
+                className="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50/50 dark:bg-[#001724] px-4 py-3 text-sm text-slate-900 dark:text-white transition-colors focus:border-[#2E8DBB] focus:bg-white dark:focus:bg-[#001724] focus:outline-none focus:ring-2 focus:ring-[#2E8DBB]/20"
                 {...register("preferredDoctor")}
               >
-                <option value="">First Available Specialist</option>
+                <option value="">First Available Consultant</option>
                 {doctorsData.map((doc) => (
                   <option key={doc.id} value={doc.id}>
                     {doc.name} – {doc.department}
@@ -322,7 +321,7 @@ export function AppointmentForm({
             <div>
               <label
                 htmlFor="preferredDate"
-                className="block text-sm font-medium text-slate-800 mb-1.5"
+                className="block text-sm font-medium text-slate-800 dark:text-slate-200 mb-1.5"
               >
                 Preferred Date <span className="text-rose-500">*</span>
               </label>
@@ -330,12 +329,12 @@ export function AppointmentForm({
                 id="preferredDate"
                 type="date"
                 min={minDate}
-                className="w-full rounded-xl border border-slate-300 bg-slate-50/50 px-4 py-3 text-sm text-slate-900 transition-colors focus:border-primary focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/20"
+                className="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50/50 dark:bg-[#001724] px-4 py-3 text-sm text-slate-900 dark:text-white transition-colors focus:border-[#2E8DBB] focus:bg-white dark:focus:bg-[#001724] focus:outline-none focus:ring-2 focus:ring-[#2E8DBB]/20"
                 {...register("preferredDate")}
                 aria-invalid={!!errors.preferredDate}
               />
               {errors.preferredDate && (
-                <p className="mt-1 text-xs text-rose-600">{errors.preferredDate.message}</p>
+                <p className="mt-1 text-xs text-rose-600 dark:text-rose-400">{errors.preferredDate.message}</p>
               )}
             </div>
 
@@ -343,22 +342,22 @@ export function AppointmentForm({
             <div>
               <label
                 htmlFor="preferredTimeSlot"
-                className="block text-sm font-medium text-slate-800 mb-1.5"
+                className="block text-sm font-medium text-slate-800 dark:text-slate-200 mb-1.5"
               >
                 Preferred Time of Day <span className="text-rose-500">*</span>
               </label>
               <select
                 id="preferredTimeSlot"
-                className="w-full rounded-xl border border-slate-300 bg-slate-50/50 px-4 py-3 text-sm text-slate-900 transition-colors focus:border-primary focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/20"
+                className="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50/50 dark:bg-[#001724] px-4 py-3 text-sm text-slate-900 dark:text-white transition-colors focus:border-[#2E8DBB] focus:bg-white dark:focus:bg-[#001724] focus:outline-none focus:ring-2 focus:ring-[#2E8DBB]/20"
                 {...register("preferredTimeSlot")}
                 aria-invalid={!!errors.preferredTimeSlot}
               >
                 <option value="morning">Morning (8:30 AM – 12:00 PM)</option>
                 <option value="afternoon">Afternoon (1:00 PM – 4:30 PM)</option>
-                <option value="evening">Late Afternoon / Evening (4:30 PM – 7:00 PM)</option>
+                <option value="evening">Late Afternoon / Evening (4:30 PM – 6:00 PM)</option>
               </select>
               {errors.preferredTimeSlot && (
-                <p className="mt-1 text-xs text-rose-600">
+                <p className="mt-1 text-xs text-rose-600 dark:text-rose-400">
                   {errors.preferredTimeSlot.message}
                 </p>
               )}
@@ -367,37 +366,37 @@ export function AppointmentForm({
         </div>
 
         {/* Symptoms / Notes */}
-        <div className="border-t border-slate-100 pt-6">
+        <div className="border-t border-slate-100 dark:border-white/10 pt-6">
           <label
             htmlFor="symptomsNotes"
-            className="block text-sm font-medium text-slate-800 mb-1.5"
+            className="block text-sm font-medium text-slate-800 dark:text-slate-200 mb-1.5"
           >
             Reason for Visit / Symptoms (Optional)
           </label>
           <textarea
             id="symptomsNotes"
             rows={3}
-            placeholder="Briefly describe your symptoms or reason for visit (e.g. routine checkup, persistent cough, knee pain)..."
-            className="w-full rounded-xl border border-slate-300 bg-slate-50/50 px-4 py-3 text-sm text-slate-900 transition-colors focus:border-primary focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/20 resize-y"
+            placeholder="Briefly describe your symptoms or reason for consultation..."
+            className="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50/50 dark:bg-[#001724] px-4 py-3 text-sm text-slate-900 dark:text-white transition-colors focus:border-[#2E8DBB] focus:bg-white dark:focus:bg-[#001724] focus:outline-none focus:ring-2 focus:ring-[#2E8DBB]/20 resize-y"
             {...register("symptomsNotes")}
           />
-          <p className="mt-1 text-xs text-slate-400">
-            Confidential medical communication protected under healthcare privacy standards.
+          <p className="mt-1 text-xs text-slate-400 dark:text-slate-500">
+            Confidential medical communication protected under healthcare standards.
           </p>
         </div>
 
         {/* Submit Button */}
-        <div className="border-t border-slate-100 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="text-xs text-slate-500 flex items-center gap-1.5">
-            <Clock className="h-4 w-4 text-emerald-600 shrink-0" />
-            <span>Response guarantee within 2 business hours during open clinic times.</span>
+        <div className="border-t border-slate-100 dark:border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
+            <Clock className="h-4 w-4 text-[#2E8DBB] dark:text-[#49C4CA] shrink-0" />
+            <span>Response guarantee during open clinic hours.</span>
           </div>
 
           <Button
             type="submit"
             size="lg"
             isLoading={isSubmitting}
-            className="w-full sm:w-auto min-w-[200px] bg-[#2E8DBB] hover:bg-[#1e5e80] text-white font-bold"
+            className="w-full sm:w-auto min-w-[200px] bg-[#2E8DBB] hover:bg-[#1e5e80] text-white font-bold rounded-xl"
           >
             <span>Confirm Appointment Request</span>
             <ArrowRight className="h-4 w-4 ml-2" />

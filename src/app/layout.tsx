@@ -4,11 +4,9 @@ import { siteConfig } from "@/data/site-config";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { FloatingMobileCTA } from "@/components/layout/floating-cta";
+import { ThemeProvider } from "@/components/theme/theme-provider";
 import "./globals.css";
 
-// Official Wada Hospital Typography:
-// Headlines: Montserrat (Bold / SemiBold)
-// Body: Open Sans (Regular / SemiBold)
 const montserrat = Montserrat({
   subsets: ["latin"],
   variable: "--font-heading",
@@ -38,8 +36,6 @@ export const metadata: Metadata = {
     "Neurology Adama",
     "Oncology Adama",
     "Surgery Adama",
-    "Gynecology and Obstetrics Adama",
-    "Pediatrics Adama",
     "Emergency Care Ethiopia",
   ],
   authors: [{ name: "Wada Hospital Medical Administration" }],
@@ -70,7 +66,10 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#2E8DBB",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#2E8DBB" },
+    { media: "(prefers-color-scheme: dark)", color: "#001724" },
+  ],
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
@@ -123,18 +122,29 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className={`${montserrat.variable} ${openSans.variable}`}>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${montserrat.variable} ${openSans.variable}`}
+    >
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="flex min-h-screen flex-col font-sans text-[#1B2B33] bg-[#F2F8FB] antialiased selection:bg-[#c7e5f3] selection:text-[#00395C] pb-16 sm:pb-0">
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
-        <FloatingMobileCTA />
+      <body className="flex min-h-screen flex-col font-sans text-[#1B2B33] dark:text-[#E9EEF1] bg-[#F2F8FB] dark:bg-[#001724] antialiased transition-colors duration-200 pb-16 sm:pb-0">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange={false}
+        >
+          <Navbar />
+          <main className="flex-1">{children}</main>
+          <Footer />
+          <FloatingMobileCTA />
+        </ThemeProvider>
       </body>
     </html>
   );

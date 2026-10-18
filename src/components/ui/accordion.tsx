@@ -27,8 +27,8 @@ export function AccordionItem({
   return (
     <div
       className={cn(
-        "rounded-2xl border border-border/80 bg-white/90 backdrop-blur-sm transition-all duration-200 overflow-hidden shadow-sm",
-        isOpen && "border-primary-300 ring-1 ring-primary-200/50 shadow-soft",
+        "rounded-2xl border border-[#E9EEF1] dark:border-white/10 bg-white/95 dark:bg-[#002238] backdrop-blur-sm transition-all duration-200 overflow-hidden shadow-sm",
+        isOpen && "border-[#2E8DBB]/40 dark:border-[#49C4CA]/40 ring-1 ring-[#2E8DBB]/20 dark:ring-[#49C4CA]/20 shadow-soft",
         className
       )}
     >
@@ -38,13 +38,13 @@ export function AccordionItem({
         aria-expanded={isOpen}
         aria-controls={contentId}
         onClick={onToggle}
-        className="flex w-full items-center justify-between p-5 md:p-6 text-left font-semibold text-slate-900 transition-all hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-inset"
+        className="flex w-full items-center justify-between p-5 md:p-6 text-left font-bold text-[#00395C] dark:text-white transition-all hover:text-[#2E8DBB] dark:hover:text-[#49C4CA] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2E8DBB] focus-visible:ring-inset"
       >
-        <span className="text-base md:text-lg pr-4">{title}</span>
+        <span className="text-base md:text-lg pr-4 font-heading">{title}</span>
         <ChevronDown
           className={cn(
-            "h-5 w-5 shrink-0 text-primary-600 transition-transform duration-300",
-            isOpen && "rotate-180 text-primary"
+            "h-5 w-5 shrink-0 text-[#2E8DBB] dark:text-[#49C4CA] transition-transform duration-300",
+            isOpen && "rotate-180"
           )}
         />
       </button>
@@ -59,7 +59,7 @@ export function AccordionItem({
             : "grid-rows-[0fr] opacity-0 pb-0"
         )}
       >
-        <div className="overflow-hidden text-sm md:text-base text-slate-600 leading-relaxed border-t border-slate-100 pt-4">
+        <div className="overflow-hidden text-sm md:text-base text-[#1B2B33]/85 dark:text-slate-300 leading-relaxed border-t border-slate-100 dark:border-white/10 pt-4">
           {children}
         </div>
       </div>
@@ -79,7 +79,7 @@ export function AccordionGroup({
   className,
 }: AccordionGroupProps) {
   const [openItems, setOpenItems] = React.useState<Record<string, boolean>>({
-    [items[0]?.id || ""]: true, // Open the first item by default
+    [items[0]?.id || ""]: true,
   });
 
   const toggle = (id: string) => {
