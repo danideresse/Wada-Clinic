@@ -15,10 +15,18 @@ interface WadaLogoProps {
 export function WadaOfficialSymbol({
   className,
   color = "#2E8DBB",
+  colorVariant,
 }: {
   className?: string;
   color?: string;
+  colorVariant?: string;
 }) {
+  const resolvedColor =
+    colorVariant === "white"
+      ? "#FFFFFF"
+      : colorVariant === "navy"
+      ? "#00395C"
+      : color;
   return (
     <svg
       viewBox="210 65 240 135"
@@ -27,7 +35,7 @@ export function WadaOfficialSymbol({
       className={cn("w-auto h-full", className)}
       aria-label="Wada Hospital Emblem"
     >
-      <g fill={color}>
+      <g fill={resolvedColor}>
         {/* Right Wings / Letterform */}
         <path d="M428.88,189.29c-2.3.56-4.46,1.66-6.75,2.26-20.06,5.2-40.97-1.15-54.1-17.13-11.26-13.71-16.55-30.34-25.03-45.51-3.01-5.38-7.77-12.78-14.92-10.4,2.85-4.4,6.63-9.28,11.21-11.95,6.67-3.91,13.52-2.86,19.66,1.48,6.48,4.59,10.13,14.56,13.49,21.66,10.31,21.79,19.11,43.74,42.3,54.65,4.42,2.08,9.16,2.76,13.52,4.48.25.1.58.09.62.46Z" />
         <path d="M442.91,79.15c-.68.66-1.72,1.34-2.42,2.02-9.87,9.56-14.71,23.81-19.3,36.49-6.33,17.48-11.23,35.55-19.07,52.43-7.58-7.16-13.29-16.33-17.64-25.8,5.62-13.29,9.21-27.75,15.8-40.57,5.94-11.55,14.77-21.65,27.87-24.46,4.98-1.07,10.05-.83,15.13-.82.09.4-.13.48-.37.71Z" />
@@ -40,6 +48,8 @@ export function WadaOfficialSymbol({
     </svg>
   );
 }
+
+export const WadaLogoMark = WadaOfficialSymbol;
 
 export function WadaLogo({
   className,
