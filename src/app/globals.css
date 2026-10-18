@@ -1,0 +1,139 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Wada Hospital Official Brand Palette */
+    /* Pale Aqua: #F2F8FB */
+    --background: 200 44% 97%;
+    /* Ink: #1B2B33 */
+    --foreground: 200 29% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 200 29% 15%;
+
+    /* Primary Blue: #2E8DBB */
+    --primary: 200 48% 46%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Mist: #E9EEF1 */
+    --secondary: 200 16% 93%;
+    --secondary-foreground: 202 100% 18%;
+
+    /* Teal Accent: #49C4CA */
+    --accent: 183 54% 54%;
+    --accent-foreground: 0 0% 100%;
+
+    --muted: 200 20% 95%;
+    --muted-foreground: 200 18% 45%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    /* Mist #E9EEF1 */
+    --border: 200 16% 91%;
+    --input: 200 16% 91%;
+    --ring: 200 48% 46%;
+
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 202 100% 10%;
+    --foreground: 200 30% 96%;
+
+    --card: 202 100% 12%;
+    --card-foreground: 200 30% 96%;
+
+    --primary: 197 59% 53%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 202 60% 18%;
+    --secondary-foreground: 200 30% 96%;
+
+    --accent: 183 54% 54%;
+    --accent-foreground: 0 0% 100%;
+
+    --muted: 202 50% 18%;
+    --muted-foreground: 200 20% 65%;
+
+    --destructive: 0 62% 35%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 202 50% 20%;
+    --input: 202 50% 20%;
+    --ring: 197 59% 53%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-[#c7e5f3] selection:text-[#00395C];
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading), "Montserrat", sans-serif;
+  }
+}
+
+/* Accessibility: reduce motion when user prefers */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Wada Hospital Brand Gradient */
+.brand-gradient {
+  background: linear-gradient(135deg, #2E8DBB 0%, #49C4CA 100%);
+}
+
+.brand-gradient-navy {
+  background: linear-gradient(135deg, #00395C 0%, #2E8DBB 100%);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #00395C 0%, #2E8DBB 60%, #49C4CA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(233, 238, 241, 0.8);
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c7e5f3;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9ed3eb;
+}
